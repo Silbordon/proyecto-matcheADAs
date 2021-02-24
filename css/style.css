@@ -1,3 +1,4 @@
+/* General Styles */
 * {
     padding: 0;
     margin: 0;
@@ -18,7 +19,7 @@ body {
 .title {
     font-family: 'Nosifer', cursive;
     color: white;
-    font-size: 3rem;
+    font-size: 2.9rem;
 }
 
 
@@ -27,11 +28,11 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 500px;
+    width: 520px;
     max-width: 500px;
     margin: auto;
     position: relative;
-    top: 50px;
+    top: 30px;
 }
 
 .control-status {
@@ -88,20 +89,41 @@ button:hover .fa-undo-alt{
 }
 
 
+/* Styles Grid */
 .container-grid{
-    width: 100%;
-    background-color: rgba(153, 149, 149, 0.568);
-    height: 60vh;
+    background-color: rgba(53, 48, 42, 0.781);
     border-radius: 20px;
     border: 3px solid white;
-    margin-top: 4%;
+    margin-top: 3%;
 }
 
-#grid{
-    height: 420px;
+.grid{
+    display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+    height: 500px;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid div{
+    display: flex;
+    width: 45px;
+    height: 45px;
+    justify-content: center;
+    align-items: center;
+}
+
+img.emoji {
+   width: 80%;
+   transform: scale(1);
+   transition: 0.2s;
+    margin: 0 .05em 0 .1em;
+    vertical-align: -0.1em;
 }
 
 
+/* timer */
 .time{
     display: flex;
     flex-direction: row;
