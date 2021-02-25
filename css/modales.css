@@ -1,0 +1,53 @@
+/* Styles modales */
+
+.swal-overlay {
+    background-color: rgba(19, 23, 26, 0.589);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+  }
+
+
+  .swal-modal {
+    background-color: rgb(20, 26, 78);
+    border: 3px solid rgb(212, 186, 186);
+    width: 550px;
+    border-radius: 20px;
+    margin-top: 200px;
+    /* margin-left: 1%; */
+    
+  }
+
+  .swal-title {
+    font-family: 'Nosifer', cursive;
+    font-size: 2.3rem;
+    top: -10px;
+    color: white;
+  }
+
+  .swal-text {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+    color: #f8f5f4;
+    font-size: 1.1rem;
+  }
+
+
+  .swal-button {
+    border-radius: 10px;
+    background-image: linear-gradient(to top, #6f703b 0%, #a39564 15%, #cc943f 35%, #cc7024 52%, #5267ad 71%, #2a456b 87%, #223857 100%);  
+    font-size: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: 1px solid #ebedf1;
+  }
+
+  .swal-button--cancel{
+    background-image: linear-gradient(to top, #c4c4bd 0%, #c2b88a 15%, #c7aa7e 35%, #ca9a73 52%, #93a2d1 71%, #90a4be 87%, #738092 100%);  
+    color: rgb(19, 16, 16);  
+  }
+
+  .swal-button:not([disable]):hover{
+    background-image: linear-gradient(to top, #8b470f 52% 0%, #c5ab85 35%, #b66d35 52%, #a73f20);  
+    color: white;
+  }
