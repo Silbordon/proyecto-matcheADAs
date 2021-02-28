@@ -5,12 +5,23 @@ const emojis = ['🎃','⚰','👻','🕸','🧛🏻‍♀️','🦇','\uD83E\uD
 const infoButton = document.getElementById('info'); //Button info
 const resetButton = document.getElementById('reset'); //Button reset
 
+//Timer
+const timer = document.getElementById("timer");
+let time ;
+let restTime;
+
+
+//Info
+let optionWelcome = true;
+
 
 //Create Grid
 let nuevoArr = [''];
 let level = 0;
 
 const createGrid = ()=>{
+  time = 30;
+  timer.innerHTML = `00:${time}`
   nuevoArr = [''];
   grid.innerHTML = '';
   for(i=0; i < level; i++ ){
@@ -27,7 +38,8 @@ const createGrid = ()=>{
     grid.appendChild(caja)
     twemoji.parse(document.body);
   };
-  
+  restTime = setInterval(myTimer, 1000);
+  return level
 };  
 
 
@@ -41,4 +53,23 @@ const createGrid = ()=>{
   resetButton.addEventListener('click', swalResetGame);
 
  
+//Timer
 
+const myTimer = () =>{
+  if(time <= 30 && time >0){
+    time =  time -1
+    let seconds = time % 60;
+    let minutes = ((time - seconds) / 60) % 60; 
+    let txtSeconds = seconds < 10 ? '0' + seconds : seconds
+    let txtMinutes = minutes < 10 ? '0' + minutes : minutes
+    timer.innerHTML = `${txtMinutes}:${txtSeconds}`
+
+  } else {
+      swalGameOver();
+    }
+};
+
+
+function stopTimer() {
+  clearInterval(restTime);
+}
