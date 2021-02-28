@@ -127,11 +127,11 @@ img.emoji {
 .time{
     display: flex;
     flex-direction: row;
-    width: 18%;
-    margin-top: 4%;
-    justify-content: space-between;
+    width: 20%;
+    margin-top: 3%;
+    justify-content: space-evenly;
     /* background-image: linear-gradient(to top, #d5d672 0%, #fda34b 15%, #ff7882 35%, #c8699e 52%, #5267ad 71%, #3a5f92 87%, #223857 100%);    */
-    padding: 1% 2%;
+    padding: 1% 1%;
     font-size: 1.4rem;
     border-radius: 10px;
     border: 3px solid white;

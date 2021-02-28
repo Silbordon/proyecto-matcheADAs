@@ -20,6 +20,7 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modales.css">
     <title>MatcheADAs</title>
 </head>
 
@@ -40,8 +41,8 @@
                 </p>
             </article>
             <article class="btn-control">
-                <button><i class="fas fa-info" aria-hidden="true"></i></button>
-                <button><i class="fas fa-undo-alt" aria-hidden="true"></i></button>
+                <button id="info"><i class="fas fa-info" aria-hidden="true"></i></button>
+                <button id="reset"><i class="fas fa-undo-alt" aria-hidden="true"></i></button>
             </article>
         </section>
         <!-- Final Section Controls -->
@@ -62,15 +63,13 @@
         <!-- Start Section Timer -->
         <section class="time">
             <i class="fas fa-history" aria-hidden="true"></i>
-            <p class="remaining-time">0:00</p>
+            <p id="timer" class="remaining-time">00:00</p>
         </section>
         <!-- Final Section Timer -->
     </main>
 
-
-
-
-    <script src="./js/app.js"></script>
+    <script src="js/modales.js"></script>
+    <script src="js/app.js"></script>
 </body>
 
 </html>

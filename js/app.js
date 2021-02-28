@@ -1,22 +1,36 @@
 
 //General
-const grid = document.getElementById('grid');
-const emojis = ['🎃','⚰','👻','🕸','🧛🏻‍♀️', '🦇','\uD83E\uDDDF\u200D\u2642\uFE0F']; 
-let level = 7;
+const grid = document.getElementById('grid'); //grid container
+const emojis = ['🎃','⚰','👻','🕸','🧛🏻‍♀️','🦇','\uD83E\uDDDF\u200D\u2642\uFE0F']; 
+const infoButton = document.getElementById('info'); //Button info
+const resetButton = document.getElementById('reset'); //Button reset
+
+//Timer
+const timer = document.getElementById("timer");
+let time ;
+let restTime;
+
+
+//Info
+let optionWelcome = true;
 
 
 //Create Grid
-const nuevoArr = [''];
+let nuevoArr = [''];
+let level = 0;
 
 const createGrid = ()=>{
+  time = 30;
+  timer.innerHTML = `00:${time}`
+  nuevoArr = [''];
   grid.innerHTML = '';
-  for(i=0; i < level; i ++ ){
+  for(i=0; i < level; i++ ){
     for(j=0; j < level; j++){
       nuevoArr.push(emojis[(Math.random() * (emojis.length -1)).toFixed(0)]);
-    };
+    }; 
   };
   
-  for(i=1; i < nuevoArr.length; i ++ ){
+  for(i=1; i < nuevoArr.length; i++){
     const caja = document.createElement('div');
     caja.style.width = `${500/level}px`;
     caja.style.height = `${500/level}px`;
@@ -24,6 +38,38 @@ const createGrid = ()=>{
     grid.appendChild(caja)
     twemoji.parse(document.body);
   };
-  
+  restTime = setInterval(myTimer, 1000);
+  return level
 };  
-createGrid();
+
+
+  
+//   Show welcome modal
+  window.onload = swallModalWelcom();
+
+
+  // Buttons Events 
+  infoButton.addEventListener('click', swallModalWelcom);
+  resetButton.addEventListener('click', swalResetGame);
+
+ 
+//Timer
+
+const myTimer = () =>{
+  if(time <= 30 && time >0){
+    time =  time -1
+    let seconds = time % 60;
+    let minutes = ((time - seconds) / 60) % 60; 
+    let txtSeconds = seconds < 10 ? '0' + seconds : seconds
+    let txtMinutes = minutes < 10 ? '0' + minutes : minutes
+    timer.innerHTML = `${txtMinutes}:${txtSeconds}`
+
+  } else {
+      swalGameOver();
+    }
+};
+
+
+function stopTimer() {
+  clearInterval(restTime);
+}
