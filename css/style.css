@@ -91,10 +91,11 @@ button:hover .fa-undo-alt{
 
 /* Styles Grid */
 .container-grid{
-    background-color: rgba(53, 48, 42, 0.781);
+    background-color: rgba(68, 62, 54, 0.781);
     border-radius: 20px;
     border: 3px solid white;
     margin-top: 3%;
+    padding: 5px;
 }
 
 .grid{
@@ -112,11 +113,12 @@ button:hover .fa-undo-alt{
     height: 45px;
     justify-content: center;
     align-items: center;
+    /* margin: .5px; */
 }
 
 img.emoji {
    width: 80%;
-   transform: scale(1);
+   transform: scale(1.0);
    transition: 0.2s;
     margin: 0 .05em 0 .1em;
     vertical-align: -0.1em;
@@ -136,4 +138,14 @@ img.emoji {
     border-radius: 10px;
     border: 3px solid white;
     background-color: #a73f20;
+}
+
+
+
+/* Style para select emoji */
+.select{
+    border: 1px outset rgb(141, 129, 129);
+    border-radius: 5px;
+    background-color: rgba(61, 56, 49, 0.781);
+
 }
