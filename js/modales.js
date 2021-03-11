@@ -1,10 +1,6 @@
 
 //Function level-Game
 const levelGame = () => {
-    if(optionWelcome === false){
-        restTime = setInterval(myTimer, 1000);
-       return;
-    }
     optionWelcome = false;
 
     swal({
@@ -67,14 +63,19 @@ const swallModalWelcom = () => {
         closeOnEsc: false,
 
     })
-        .then(levelGame)
+    .then(()=>{
+        if(optionWelcome){
+          levelGame();
+        }else if(!optionWelcome){
+            myTimer();
+        };
+      });
 };
 
 
 //Modal Reset Game and choose new level
 const swalResetGame = () => {
-    optionWelcome = true;
-stopTimer();
+    stopTimer();
     swal({
         title: "Reiniciar juego?",
         text: `Perderás todo tu puntaje acumulado`,
@@ -85,17 +86,16 @@ stopTimer();
         closeOnClickOutside: false,
         closeOnEsc: false,
     })
-    .then((value) => {
-        switch (value) {
-            case null:
-                restTime = setInterval(myTimer, 1000);
-            break;
-            case true:
-                levelGame();
-            break;
-        }
-    })
-
+        .then((value) => {
+            switch (value) {
+                case null:
+                    myTimer()
+                    break;
+                case true:
+                    levelGame();
+                    break;
+            }
+        });
 };
 
 
@@ -121,7 +121,6 @@ const swalGameOver = () => {
         .then((value) => {
             switch (value) {
                 case "nuevoJuego":
-                    optionWelcome = true;
                     levelGame();
                     break;
                 case "reiniciar":
