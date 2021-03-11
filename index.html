@@ -5,22 +5,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="autor" content="Silvina Bordón">
+    <meta name="description" content="Juego de navegador conocido como Mat-3">
+    <meta name="keywords" content="juego mat-3, halloween, juego de coincidencias">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Matcheadas por Silvina Bordon">
+    <meta property="og:description" content="Juego de navegador conocido como Mat-3">
+    <meta property="og:type" content="article">
+    <meta property="og:site name" content="Matcheadas">
+    <meta property="og:url" content="https://silbordon.github.io/proyecto-matcheADAs/">
+    <meta property="og:image" content="https://github.com/Silbordon/proyecto-matcheADAs/blob/accessibility/img/matcheadas.png?raw=true">
+
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://silbordon.github.io/proyecto-matcheADAs/">
+    <meta property="twitter:title" content="Matcheadas">
+    <meta property="twitter:description" content="Juego de navegador conocido como Mat-3">
+    <meta property="twitter:image" content="https://github.com/Silbordon/proyecto-matcheADAs/blob/accessibility/img/matcheadas.png?raw=true">
+
+
+    <!--Links -->
     <link rel="shortcut icon" href="./img/fav.jpg" type="image/x-icon">
     <script src="https://kit.fontawesome.com/b50399bb27.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Jolly+Lodger&display=swap" rel="stylesheet">
-
-    <!-- Twemoji -->
-    <script src="https://twemoji.maxcdn.com/v/13.0.1/twemoji.min.js" integrity="sha384-5f4X0lBluNY/Ib4VhGx0Pf6iDCF99VGXJIyYy7dDLY5QlEd7Ap0hICSSZA1XYbc4" crossorigin="anonymous"></script>
-    
-    <!-- Sweet Alert -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    
-    <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/modales.css">
+
+    <!-- Twemoji -->
+    <script src="https://twemoji.maxcdn.com/v/13.0.1/twemoji.min.js"
+        integrity="sha384-5f4X0lBluNY/Ib4VhGx0Pf6iDCF99VGXJIyYy7dDLY5QlEd7Ap0hICSSZA1XYbc4"
+        crossorigin="anonymous"></script>
+
+    <!-- Sweet Alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <title>MatcheADAs</title>
 </head>
 
@@ -41,8 +64,8 @@
                 </p>
             </article>
             <article class="btn-control">
-                <button id="info"><i class="fas fa-info" aria-hidden="true"></i></button>
-                <button id="reset"><i class="fas fa-undo-alt" aria-hidden="true"></i></button>
+                <button id="info" aria-label="instrucciones"><i class="fas fa-info" aria-hidden="true"></i></button>
+                <button id="reset" aria-label="reiniciar juego"><i class="fas fa-undo-alt" aria-hidden="true"></i></button>
             </article>
         </section>
         <!-- Final Section Controls -->
@@ -51,8 +74,7 @@
 
 
         <!-- Start Section Grilla -->
-        <section class="container-grid">
-
+        <section id="grid-container" class="container-grid">
             <article id="grid" class="grid"></article>
         </section>
         <!-- Final Section Grilla -->
@@ -67,7 +89,6 @@
         </section>
         <!-- Final Section Timer -->
     </main>
-
     <script src="js/modales.js"></script>
     <script src="js/app.js"></script>
 </body>

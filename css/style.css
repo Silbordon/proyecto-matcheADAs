@@ -28,7 +28,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 520px;
+    /* width: 520px; */
     max-width: 500px;
     margin: auto;
     position: relative;
@@ -38,8 +38,8 @@ body {
 .control-status {
     margin-top: 4%;
     display: flex;
-    width: 100%;
-    background-image: linear-gradient(to top, #d5d672 0%, #c9b77e 15%, #cc943f 35%, #cc7024 52%, #5267ad 71%, #2a456b 87%, #223857 100%);   
+    width: 95%;
+    background-image: linear-gradient(to top, #d5d672 0%, #c9b77e 15%, #cc943f 35%, #cc7024 52%, #5267ad 71%, #2a456b 87%, #223857 100%);
     justify-content: space-between;
     padding: 1% 3%;
     font-size: 1.8rem;
@@ -55,21 +55,21 @@ body {
 }
 
 
-.btn-control{
+.btn-control {
     display: flex;
     justify-content: space-between;
 }
 
-.btn-control button{
+.btn-control button {
     background-color: transparent;
     outline: none;
     border: none;
     cursor: pointer;
     margin-left: 10px;
-    
+
 }
 
-.btn-control i{
+.btn-control i {
     font-size: 1.1rem;
     color: rgb(236, 226, 226);
     padding: 7px;
@@ -78,19 +78,22 @@ body {
 }
 
 
-.btn-control i:hover{
+.btn-control i:hover {
     background-color: #223A5C;
     border: 1px solid white;
     border-radius: 50%;
 }
 
-button:hover .fa-undo-alt{
+button:hover .fa-undo-alt {
     transform: rotate(-180deg);
 }
 
 
 /* Styles Grid */
-.container-grid{
+.container-grid {
+    width: 95%;
+    max-height: 500px;
+    min-height: 300px;
     background-color: rgba(68, 62, 54, 0.781);
     border-radius: 20px;
     border: 3px solid white;
@@ -98,16 +101,16 @@ button:hover .fa-undo-alt{
     padding: 5px;
 }
 
-.grid{
+.grid {
     display: flex;
     flex-wrap: wrap;
-    width: 500px;
-    height: 500px;
+    /* width: 500px;
+    height: 500px; */
     justify-content: center;
     align-items: center;
 }
 
-.grid div{
+.grid div {
     display: flex;
     width: 45px;
     height: 45px;
@@ -118,16 +121,16 @@ button:hover .fa-undo-alt{
 }
 
 img.emoji {
-   width: 80%;
-   transform: scale(1.0);
-   transition: 0.2s;
+    width: 80%;
+    transform: scale(1.0);
+    transition: 0.2s;
     margin: 0 .05em 0 .1em;
     vertical-align: -0.1em;
 }
 
 
 /* timer */
-.time{
+.time {
     display: flex;
     flex-direction: row;
     width: 20%;
@@ -144,9 +147,30 @@ img.emoji {
 
 
 /* Style para select emoji */
-.select{
+.select {
     border: 1px outset rgb(141, 129, 129);
     border-radius: 5px;
     background-color: rgba(61, 56, 49, 0.781);
 
+}
+
+@media (max-width:550px) {
+    .title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width:360px) {
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .control-status {
+        font-size: 1.4rem;
+    }
+
+    .time {
+        width: 25%;
+        font-size: 1.2rem;
+    }
 }
