@@ -1,11 +1,12 @@
 
 //General
-const grid = document.getElementById('grid'); //grid container
+const grid = document.getElementById('grid'); //grid 
 const emojis = ['🎃', '⚰', '👻', '🕸', '🧛🏻‍♀️', '🦇', '\uD83E\uDDDF\u200D\u2642\uFE0F'];
 const infoButton = document.getElementById('info'); //Button info
 const resetButton = document.getElementById('reset'); //Button reset
+const gridContainer = document.getElementById('grid-container'); //Grid container
 let gridArr = [];
-
+let ancho;
 
 
 //Timer
@@ -31,8 +32,8 @@ const getBox = (x,y) => {
   box.dataset.x = x;
   box.dataset.y = y;
   box.innerHTML = gridArr[i][j];
-  box.style.width = `${500 / level}px`;
-  box.style.height = `${500 / level}px`;
+  box.style.width = `${(ancho / level - 5).toFixed(0)}px`;
+  box.style.height = `${(ancho / level - 5).toFixed(0)}px`;
   grid.appendChild(box);
   box.addEventListener("click", selectBox);
 };
@@ -139,5 +140,17 @@ const isAdjancent = (box1, box2) => {
 
 
 
+//Responsive Grid
 
+const resize = () => {
+  ancho = (gridContainer.getBoundingClientRect().width)
+  if(innerWidth > 550){
+      return
+  } else {
+      gridContainer.style.width = `${ancho}px`
+      gridContainer.style.height = `${ancho}px`
+  }
+  return ancho
+}
 
+window.onload = resize;
