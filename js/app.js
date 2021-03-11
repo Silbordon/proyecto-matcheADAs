@@ -104,14 +104,17 @@ resetButton.addEventListener('click', swalResetGame);
 
 const selectBox = e => {
   let clickedItem = document.querySelector('.select')
+  // console.log(e)
   // console.log(e.path[1])
   if (clickedItem) {
     console.log(isAdjancent(clickedItem, e.path[1]))
 
   } else {
-    e.path[1].classList.add('select')
+    if(e.target.classList.contains('emoji')){
+    e.path[1].classList.add('select');
   }
-}
+}};
+
 
 const isAdjancent = (box1, box2) => {
   const datax1 = Number(box1.dataset.x);
