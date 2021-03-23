@@ -82,6 +82,8 @@ const createGrid = () => {
     for (j = 0; j < level; j++) {
       gridArr[i][j] = getRandom();
       getBox(i,j);
+      horizontalBlock();
+      verticalBlock();
     };
     twemoji.parse(document.body);
   };
@@ -103,18 +105,34 @@ resetButton.addEventListener('click', swalResetGame);
 
 //Items Select
 
-const selectBox = e => {
-  let clickedItem = document.querySelector('.select')
-  // console.log(e)
-  // console.log(e.path[1])
-  if (clickedItem) {
-    console.log(isAdjancent(clickedItem, e.path[1]))
 
+const selectBox = (e) => {
+  let clickedItem = document.querySelector(".select");
+  if (clickedItem) {
+    if (isAdjancent(clickedItem, e.path[1])) {
+      swapBox(clickedItem, e.path[1]);
+      const horizontal = horizontalBlock();
+      const vertical = verticalBlock();
+      if (horizontal === false && vertical === false) {
+        setTimeout(() => {
+          swapBox(clickedItem, e.path[1]);
+        }, 500);
+      }
+    } else {
+      if (e.target.classList.contains("emoji")) {
+        e.path[1].classList.add("select");
+        clickedItem.classList.remove("select");
+      }
+    }
+    clickedItem.classList.remove("select");
   } else {
-    if(e.target.classList.contains('emoji')){
-    e.path[1].classList.add('select');
+    if (e.target.classList.contains("emoji")) {
+      e.path[1].classList.add("select");
+    }
   }
-}};
+  horizontalBlock();
+  verticalBlock();
+};
 
 
 const isAdjancent = (box1, box2) => {
@@ -122,8 +140,8 @@ const isAdjancent = (box1, box2) => {
   const datax2 = Number(box2.dataset.x);
   const datay1 = Number(box1.dataset.y);
   const datay2 = Number(box2.dataset.y);
-  console.log(box1.dataset.x)
-  console.log(box1.dataset.y)
+  // console.log(box1.dataset.x)
+  // console.log(box1.dataset.y)
 
 
   if (
@@ -138,6 +156,138 @@ const isAdjancent = (box1, box2) => {
 };
 
 
+// Intercambiar iconos
+const swapBox = (box1, box2) => {
+  const x1 = Number(box1.dataset.x);
+  const x2 = Number(box2.dataset.x);
+  const y1 = Number(box1.dataset.y);
+  const y2 = Number(box2.dataset.y);
+
+  // modificar la grilla en js
+  let change = gridArr[x1][y1];
+  gridArr[x1][y1] = gridArr[x2][y2];
+  gridArr[x2][y2] = change;
+
+  // modificar el html
+  let change2 = box1.innerHTML;
+  box1.innerHTML = box2.innerHTML;
+  box2.innerHTML = change2;
+};
+
+
+// Buscando coincidencias
+
+const horizontalBlock = () => {
+  let result;
+  let booleano = false;
+  for (let i = 0; i < gridArr.length; i++) {
+    for (let j = 0; j < gridArr[i].length; j++) {
+      let match = 0;
+      for (let k = j; k <= gridArr[i].length; k++) {
+        if (gridArr[i][j] === gridArr[i][k]) {
+          match++;
+        } else {
+          if (match >= 3) {
+            result = { x: i, y: j, match: match };
+            let a = 0;
+            while (a < result.match) {
+              a++;
+              let box = document.querySelector(
+                `div[data-x="${result.x}"][data-y="${result.y}"]`
+              );
+              box.innerHTML = "";
+              gridArr[result.x][result.y] = null;
+              gridArr[result.x][result.y] = getRandom();
+              box.classList.add("horizontal");
+              box.innerHTML = gridArr[result.x][result.y];
+              twemoji.parse(document.body);
+              result.y = result.y + 1;
+            }
+            booleano = true;
+          } else {
+            match = 1;
+            j = k;
+          }
+        }
+      }
+    }
+  }
+  return booleano;
+};
+
+
+
+const verticalBlock = () => {
+  let result;
+  let booleano = false;
+  for (let j = 0; j < gridArr[0].length; j++) {
+    for (let i = 0; i < gridArr.length; i++) {
+      let match = 0;
+      for (let k = i; k <= gridArr.length; k++) {
+        if (gridArr[k] && gridArr[i][j] === gridArr[k][j]) {
+          match++;
+        } else {
+          if (match >= 3) {
+            result = { x: i, y: j, match: match };
+            let a = 0;
+            while (a < result.match) {
+              a++;
+              let box = document.querySelector(
+                `div[data-x="${result.x}"][data-y="${result.y}"]`
+              );
+              box.innerHTML = "";
+              gridArr[result.x][result.y] = null;
+              gridArr[result.x][result.y] = getRandom();
+              box.classList.add("vertical");
+              box.innerHTML = gridArr[result.x][result.y];
+              twemoji.parse(document.body);
+              result.x = result.x + 1;
+            }
+            booleano = true;
+          } else {
+            match = 1;
+            i = k;
+          }
+        }
+      }
+    }
+  }
+  return booleano;
+};
+
+
+// Eliminar y rellenar iconos
+// const deleteAndCompleteHorizontal = (result) => {
+//   let a = 0;
+//   while (a < result.match) {
+//     a++;
+//     let box = document.querySelector(
+//       `div[data-x="${result.x}"][data-y="${result.y}"]`
+//     );
+//     box.innerHTML = "";
+//     gridArr[result.x][result.y] = null;
+//     gridArr[result.x][result.y] = getRandom();
+//     box.innerHTML = gridArr[result.x][result.y];
+//     twemoji.parse(document.body);
+//     result.y = result.y + 1;
+//   }
+// };
+
+// const deleteAndCompleteVertical = (result) => {
+//   let a = 0;
+//   while (a < result.match) {
+//     a++;
+//     let box = document.querySelector(
+//       `div[data-x="${result.x}"][data-y="${result.y}"]`
+//     );
+//     box.innerHTML = "";
+//     gridArr[result.x][result.y] = null;
+//     gridArr[result.x][result.y] = getRandom();
+//     box.innerHTML = gridArr[result.x][result.y];
+//     twemoji.parse(document.body);
+//     result.x = result.x + 1;
+//   }
+// };
 
 
 //Responsive Grid
