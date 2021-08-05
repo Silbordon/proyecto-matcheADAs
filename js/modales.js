@@ -27,17 +27,20 @@ const levelGame = () => {
             switch (value) {
                 case "facil":
                     level = 9;
+                    time=90
                     break;
                 case "medio":
                     level = 8;
+                    time=60
                     break;
 
                 case "dificil":
                     level = 7;
+                    time=30
                     break;
                 default:
             }
-            createGrid();
+            gridMatchesFree(emojis);
         });
 };
 
@@ -100,11 +103,11 @@ const swalResetGame = () => {
 
 
 // Modal Game Over y points
-let puntajeFinal;
+
 const swalGameOver = () => {
     swal({
         title: "¡Juego Terminado!",
-        text: `Puntaje Final: ${puntajeFinal}`,
+        text: `Puntaje Final: ${points}`,
         buttons: {
             newGame: {
                 text: "Nuevo Juego",
@@ -124,8 +127,8 @@ const swalGameOver = () => {
                     levelGame();
                     break;
                 case "reiniciar":
-                    createGrid(level);
-
+                    time = dataRestart[1];
+                    gridMatchesFree(emojis);
                     break;
                 default:
             };
